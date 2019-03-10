@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+        <div id="app">
+                <p>{{message}}</p>
+                <input type="text" v-model='message'><br>
+                <input type="text" v-model.lazy='message'><hr>
+                <input type="checkbox" id="isTrue" v-model="isTrue">
+
+                <label for='isTrue'>{{isTrue}}</label>
+           </div>
+           <script>
+               var app = new Vue({
+                   el:'#app',
+                   data:{
+                       message:'vue',
+                       isTrue:true
+                   }
+               })
+           </script>
+</body>
+</html>

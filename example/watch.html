@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+        <div id="app">
+            <p>{{temperature}}</p>
+            <p>{{suggestion}}</p>
+            <button @click='add'>add</button>
+            <button @click='decrease'>decrease</button>    
+        </div>
+        <script>
+            var suggestion = ['T恤短袖','夹克长裙','棉衣羽绒服'];
+            var app = new Vue({
+                el:'#app',
+                data:{
+                    temperature:15,  
+                    suggestion:'夹克长裙'
+                },
+                methods:{
+                    add:function(){
+                        this.temperature += 5;
+                    },
+                    decrease:function(){
+                        this.temperature -= 5;
+                    }
+                },
+                watch:{
+                    temperature:function (value) {
+                        if(value>26){
+                            this.suggestion=suggestion[0];
+                        }else if(value>0&&value<26){
+                            this.suggestion=suggestion[1];
+                        }
+                    }
+                }
+            })
+        </script>
+</body>
+</html>

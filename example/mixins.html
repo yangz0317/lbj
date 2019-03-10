@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+        <div id="app">
+            <p>{{temperature}}</p>
+            <button @click='add'>add</button>  
+        </div>
+        <script>
+            var aa = {
+                updated:function() {
+                    console.log('我是外部被混入的');
+                }
+            };
+            Vue.mixin({
+                updated:function(){
+                    console.log('我是全局被混入的');
+                }
+            });  
+            var app = new Vue({
+                el:'#app',
+                data:{
+                    temperature:15,  
+                },
+                methods:{
+                    add:function(){
+                        this.temperature ++;
+                    }
+                },
+                updated:function() {
+                        console.log("构造器里的updated方法");
+                    },             
+                mixins:[aa]
+            })
+        </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../assets/vue.js"></script>
+    <title>Helloworld</title>
+</head>
+<body>
+    <div id="app">
+        <jspang>
+            <span slot='bolgUrl'>{{jspangData.bolgUrl}}</span>
+        </jspang>
+    </div>
+    <template id="demo">
+        <div>
+            <p>博客地址：<slot name='bolgUrl'></slot></p>
+        </div>
+    </template>
+    <script type="text/javascript">
+
+        var jspang={
+            template:'#demo'
+        }
+        var app=new Vue({
+            el:'#app',
+            data:{
+                jspangData:{
+                    bolgUrl:'http://jspang.com',
+                    netName:'技术胖',
+                    skill:'Web前端'
+                }
+            },
+            components:{
+                'jspang':jspang  
+           },
+           
+        })
+    </script>
+</body>
+</html>
